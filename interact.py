@@ -1,8 +1,15 @@
 from app import train_classifier, classify_text
+import configcatclient
+
+configcat_client = configcatclient.get(
+    'YOUR-CONFIGCAT-SDK-KEY',
+)
 
 def test_query():
     text = input("Hi I'm a chatbot. Lets talk: ")
-    result = classify_text(text, 'pro')
+    proModel = configcat_client.get_value('proModel', False)
+    model = 'pro' if proModel else 'base'
+    result = classify_text(text, model)
     print(result)
 
 def run_app():
