@@ -2,7 +2,7 @@ from app import train_classifier, classify_text
 import configcatclient # Import the ConfigCat SDK
 
 configcat_client = configcatclient.get(
-    'gnLbCJ_nhUCGHl1SZNyC5Q/V794nqFnpkWY_7TuhXTaOw', # Replace with your SDK Key
+    'YOUR-CONFIGCAT-SDK-KEY', # Replace with your SDK Key
 )
 
 def test_query():
