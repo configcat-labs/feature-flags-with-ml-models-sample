@@ -3,12 +3,14 @@ from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
-import pickle5 as pickle
+import pickle
 
 def train_classifier(model_type):
+    # Load the training data
     df = pd.read_json('./models/{0}/classification_data.json'.format(model_type))
     X_train, X_test, y_train, y_test = train_test_split(df['text'], df['intent'], random_state=0)
 
+    # Train the model
     count_vect = CountVectorizer()
     X_train_counts = count_vect.fit_transform(X_train)
     tfidf_transformer = TfidfTransformer()
@@ -24,7 +26,7 @@ def train_classifier(model_type):
     mod_file = './models/{0}/classifier.model'.format(model_type)
     pickle.dump(model, open(mod_file, 'wb'))
 
-    # Print training complete
+    # Print training complete to the terminal
     print("Training completed for {0} model".format(model_type))
     
 
