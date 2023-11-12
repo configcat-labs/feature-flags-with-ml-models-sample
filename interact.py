@@ -1,13 +1,15 @@
 from app import train_classifier, classify_text
-import configcatclient
+import configcatclient # Import the ConfigCat SDK
 
 configcat_client = configcatclient.get(
-    'YOUR-CONFIGCAT-SDK-KEY',
+    'gnLbCJ_nhUCGHl1SZNyC5Q/V794nqFnpkWY_7TuhXTaOw', # Replace with your SDK Key
 )
 
 def test_query():
     text = input("Hi I'm a chatbot. Lets talk: ")
+    # Get the value of the proModel feature flag
     proModel = configcat_client.get_value('proModel', False)
+    # Use the pro model if the feature flag is on
     model = 'pro' if proModel else 'base'
     result = classify_text(text, model)
     print(result)
