@@ -6,7 +6,7 @@ configcat_client = configcatclient.get(
 )
 
 def test_query():
-    text = input("Hi I'm a chatbot. Lets talk: ")
+    text = input("Hi, I'm a chatbot. Let's talk: ")
     # Get the value of the proModel feature flag
     proModel = configcat_client.get_value('proModel', False)
     # Use the pro model if the feature flag is on
